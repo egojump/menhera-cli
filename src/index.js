@@ -17,9 +17,8 @@ const useInit = {
       }
     },
     commands: {
-      "*"({ v, h, CLI, CLI: { config: { version, help } } }) {
+      "*"({ v, CLI: { config: { version } } }) {
         v && console.log(version);
-        h && console.log(typeof help === "function" ? help(CLI) : help);
       }
     }
   }
@@ -57,12 +56,9 @@ export default {
       },
       config: {
         _({ _, _val }) {
-          const { start, target, init = true } = _val;
+          const { start, target } = _val;
           Object.assign(this.config, _val);
-
-          if (init) {
-            _.$use(useInit);
-          }
+          _.$use(useInit);
 
           if (start) {
             let { _: __, ...options } = parser(target || process.argv.slice(2));

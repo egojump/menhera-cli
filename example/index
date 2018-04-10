@@ -15,16 +15,16 @@ const _ = new Menhera({
       }
     },
     commands: {
-      "*"({ test }) {
+      "*"({ test, h }) {
         test && console.log(test);
+        h && console.log("Test help");
       },
       "serve [port]"({ port }) {
         console.log(`server running on port:${port}`);
       }
     },
     config: {
-      version: "0.0.1",
-      help: ({ config: { version } }) => `${version}`
+      version: "0.0.1"
     }
   }
 }).$use({
