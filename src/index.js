@@ -55,31 +55,27 @@ export default {
         }
       },
       config: {
-        _({ _, _val }) {
-          const { start, target } = _val;
+        _({ _val }) {
           Object.assign(this.config, _val);
+        },
+        start({ _, _val }) {
+          const { target } = this.config;
+          _.$use(useInit);
 
-          if (start) {
-            _.$use(useInit);
-
-            let { _: __, ...options } = parser(target || process.argv.slice(2));
-            let [_key = "*", ..._args] = __;
-            for (let [key, val] of entries(options)) {
-              this.args[key] = val;
-              const { alias } = this.options[key] || {};
-              if (alias) {
-                this.args[alias] = val;
-              }
+          let { _: __, ...options } = parser(target || process.argv.slice(2));
+          let [_key = "*", ..._args] = __;
+          for (let [key, val] of entries(options)) {
+            this.args[key] = val;
+            const { alias } = this.options[key] || {};
+            if (alias) {
+              this.args[alias] = val;
             }
-            const { args = [] } = this.commands[_key] || {};
-            args.forEach((argv, i) => {
-              this.args[argv] = _args[i];
-            });
-            this.Event.emit(_key, {
-              CLI: this,
-              ...this.args
-            });
           }
+          const { args = [] } = this.commands[_key] || {};
+          args.forEach((argv, i) => {
+            this.args[argv] = _args[i];
+          });
+          this.Event.emit(_key, { CLI: this, ...this.args });
         }
       }
     }
