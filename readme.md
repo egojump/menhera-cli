@@ -53,7 +53,7 @@ const _ = new Menhera({
 node index.js serve 3000
 ```
 
-### API
+### Default
 
 ```js
 // $use init
