@@ -58,9 +58,10 @@ export default {
         _({ _, _val }) {
           const { start, target } = _val;
           Object.assign(this.config, _val);
-          _.$use(useInit);
 
           if (start) {
+            _.$use(useInit);
+
             let { _: __, ...options } = parser(target || process.argv.slice(2));
             let [_key = "*", ..._args] = __;
             for (let [key, val] of entries(options)) {
