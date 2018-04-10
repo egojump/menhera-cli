@@ -1,6 +1,6 @@
 {
   "name": "menhera-cli",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "dist",
   "files": [
@@ -13,6 +13,7 @@
   },
   "author": "chito<ncysatnaf@gmail.com>",
   "dependencies": {
+    "prompts": "^0.1.8",
     "yargs-parser": "^10.0.0"
   },
   "devDependencies": {
