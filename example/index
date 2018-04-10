@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const Menhera = require("menhera").default;
 const CLI = require("../dist").default;
 
