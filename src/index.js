@@ -2,6 +2,7 @@ import { EventEmitter } from "events";
 import parser from "yargs-parser";
 const { isArray } = Array;
 const { entries } = Object;
+import prompts from "prompts";
 
 const commandRegex = /\.*[\][<>]/g;
 const useInit = {
@@ -36,6 +37,12 @@ export default {
       options: {
         _({ _key, _val, cp }) {
           Object.assign(this.options, _val);
+        }
+      },
+      prompts: {
+        _({ _, _val }) {
+          const { input, then } = _val;
+          prompts(input).then(res => then({ res, _, CLI: this }));
         }
       },
       commands: {
