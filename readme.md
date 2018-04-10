@@ -52,3 +52,28 @@ const _ = new Menhera({
 ```bash
 node index.js serve 3000
 ```
+
+### API
+
+```js
+// $use init
+{
+  CLI: {
+    options: {
+      v: {
+        alias: "version",
+        desc: "version"
+      },
+      h: {
+        alias: "help",
+        decs: "help"
+      }
+    },
+    commands: {
+      "*"({ v, CLI: { config: { version } } }) {
+        v && console.log(version);
+      }
+    }
+  }
+}
+```
