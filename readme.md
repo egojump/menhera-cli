@@ -1,5 +1,7 @@
 # Menehra-CLI
 
+a cli plugin for menhera
+
 ### Install
 
 ```bash
