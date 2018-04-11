@@ -1,18 +1,7 @@
-# Menehra-CLI
+#!/usr/bin/env node
 
-a cli plugin for menhera
-
-### Use For Module
-
-```bash
-yarn add menhera menhera-cli
-```
-
-```js
-// index.js
-
-const Menehra = require("menehra");
-const CLI = require("menhera-cli");
+const Menhera = require("menhera").default;
+const CLI = require("menhera-cli").default;
 
 const _ = new Menhera({
   _mount: {
@@ -45,16 +34,3 @@ const _ = new Menhera({
     }
   }
 });
-```
-
-```bash
-node index.js serve 3000
-```
-
-### Use For Cli
-
-```bash
-yarn install menhera-cli -g
-
-mhr init <my-project>
-```

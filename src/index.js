@@ -82,7 +82,7 @@ export default {
           args.forEach((argv, i) => {
             this.args[argv] = _args[i];
           });
-          this.Event.emit(_key, { CLI: this, ...this.args });
+          this.Event.emit(_key, { _, CLI: this, ...this.args });
         }
       }
     }
