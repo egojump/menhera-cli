@@ -1,8 +1,8 @@
 {
   "name": "menhera-cli",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "",
-  "main": "dist/index",
+  "main": "dist/core/index.js",
   "bin": {
     "mhr": "./bin/mhr"
   },
@@ -12,8 +12,7 @@
     "bin"
   ],
   "scripts": {
-    "example": "babel-node ./example/index",
-    "build": "babel ./src --out-dir dist",
+    "build": "rm -rf ./dist ; babel ./packages --out-dir dist",
     "prepublishOnly": "npm run build"
   },
   "author": "chito<ncysatnaf@gmail.com>",
@@ -29,6 +28,7 @@
   "devDependencies": {
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-3": "^6.24.1"
+    "babel-preset-stage-3": "^6.24.1",
+    "lerna": "^2.10.1"
   }
 }
