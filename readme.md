@@ -52,7 +52,7 @@ node index.js serve 3000
 ### Use For Cli
 
 ```bash
-yarn install menhera-cli -g
+yarn global add menhera-cli
 
 mhr init <my-project>
 ```
