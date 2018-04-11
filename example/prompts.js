@@ -31,14 +31,12 @@ const _ = new Menhera({
       then({ res }) {
         console.log({ res });
       }
-    },
-    config: {
-      version: "0.0.1"
     }
   }
 }).$use({
   CLI: {
     config: {
+      version: "0.0.1",
       start: true
     }
   }

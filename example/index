@@ -22,14 +22,12 @@ const _ = new Menhera({
       "serve [port]"({ port }) {
         console.log(`server running on port:${port}`);
       }
-    },
-    config: {
-      version: "0.0.1"
     }
   }
 }).$use({
   CLI: {
     config: {
+      version: "0.0.1",
       start: true
     }
   }
