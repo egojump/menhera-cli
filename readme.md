@@ -2,6 +2,14 @@
 
 a cli plugin for menhera
 
+### Use For Cli
+
+```bash
+yarn global add menhera-cli
+
+mhr init <my-project>
+```
+
 ### Use For Module
 
 ```bash
@@ -49,7 +57,6 @@ const _ = new Menhera({
     }
   }
 });
-
 ```
 
 ```bash
@@ -57,12 +64,3 @@ node index.js
 ```
 
 ![preview](./assets/cli.png)
-
-
-### Use For Cli
-
-```bash
-yarn global add menhera-cli
-
-mhr init <my-project>
-```
