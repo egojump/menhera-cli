@@ -35,7 +35,11 @@ We suggest that you begin by typing:
   $ cd ${projectName}
   $ yarn install
   
-Happy hacking!
+When you installed dependencies that you can typing:
+  $ yarn start
+  $ yarn run build
+
+  Happy hacking!
 `
             )
           );
