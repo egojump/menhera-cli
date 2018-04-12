@@ -1,8 +1,8 @@
 import { EventEmitter } from "events";
 import parser from "yargs-parser";
+import { _prompts } from "./plugin";
 const { isArray } = Array;
 const { entries } = Object;
-import prompts from "prompts";
 
 const commandRegex = /\.*[\][<>]/g;
 const useInit = {
@@ -25,6 +25,8 @@ const useInit = {
   }
 };
 
+export * from "./plugin";
+
 export default {
   name: "CLI",
   Event: new EventEmitter(),
@@ -34,15 +36,10 @@ export default {
   config: {},
   _hooks: {
     CLI: {
+      prompts: _prompts,
       options: {
         _({ _key, _val, cp }) {
           Object.assign(this.options, _val);
-        }
-      },
-      prompts: {
-        _({ _, _val }) {
-          const { input, then } = _val;
-          prompts(input).then(res => then({ res, _, CLI: this }));
         }
       },
       commands: {
