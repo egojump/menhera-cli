@@ -1,6 +1,6 @@
 {
   "name": "menhera-cli",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "",
   "main": "dist/core/index.js",
   "bin": {
@@ -31,7 +31,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-3": "^6.24.1",
     "lerna": "^2.10.1",
-    "menhera-cli": "^0.1.3",
+    "menhera-cli": "^0.1.5",
     "nodemon": "^1.17.3"
   }
 }
