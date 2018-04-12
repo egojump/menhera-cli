@@ -12,12 +12,7 @@ const _ = new Menhera({
     options: {},
     commands: {
       "init [projectName]": init
-    }
-  }
-});
-
-_.$use({
-  CLI: {
+    },
     config: {
       version: "0.0.1",
       templatePath: join(__dirname, "../../.templates")
