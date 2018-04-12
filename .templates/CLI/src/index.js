@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
 import Menhera from "menhera";
-// import CLI from "menhera-cli";
-import CLI from "../../../packages/core"
+import CLI from "menhera-cli";
 import options from "./options";
-import { basic, serve } from "./commands";
+import { basic, serve, test } from "./commands";
 
 const _ = new Menhera({
   _mount: {
@@ -14,21 +13,14 @@ const _ = new Menhera({
     options,
     commands: {
       _: basic,
-      serve: serve,
-      test: {
-        desc:"test desc",
-        exec({ test }) {
-          test && console.log(test);
-        }
-      }
-    },
-    config: {
-      version: "0.0.1"
+      serve,
+      test
     }
   }
 }).$use({
   CLI: {
     config: {
+      version: "0.0.1",
       start: true
     }
   }

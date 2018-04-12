@@ -1,5 +1,4 @@
 export const basic = {
-  desc: "*",
   exec({ _, h, CLI: { commands } }) {
     _.$use({
       CLI: {
@@ -13,8 +12,15 @@ export const basic = {
 
 export const serve = {
   desc: "run serve on port",
-  args:['port'],
+  args: ["port"],
   exec({ port }) {
     console.log(`server running on port:${port}`);
+  }
+};
+
+export const test = {
+  desc: "test desc",
+  exec({ test }) {
+    test && console.log(test);
   }
 };

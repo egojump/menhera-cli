@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "menhera": "^0.5.8",
-    "menhera-cli": "^0.1.3"
+    "menhera-cli": "^0.1.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

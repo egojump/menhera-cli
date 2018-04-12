@@ -2480,9 +2480,9 @@ mem@^1.1.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-menhera-cli@^0.1.3:
-  version "0.1.3"
-  resolved "https://registry.npmjs.org/menhera-cli/-/menhera-cli-0.1.3.tgz#a66fcaab077208ddacaa1cd95d2e9e7556389c01"
+menhera-cli@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.npmjs.org/menhera-cli/-/menhera-cli-0.1.6.tgz#57d2ab45336ba712dd2c92f51f53286308b6905c"
   dependencies:
     "@types/chalk" "^2.2.0"
     "@types/fs-extra" "^5.0.1"

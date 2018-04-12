@@ -31,7 +31,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-3": "^6.24.1",
     "lerna": "^2.10.1",
-    "menhera-cli": "^0.1.5",
+    "menhera-cli": "^0.1.6",
     "nodemon": "^1.17.3"
   }
 }

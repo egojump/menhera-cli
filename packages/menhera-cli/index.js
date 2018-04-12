@@ -1,17 +1,19 @@
 import Menhera from "menhera";
 import CLI from "../core";
+import options from "./options";
 
 import { join } from "path";
-import { init } from "./commands";
+import { init, basic } from "./commands";
 
-const _ = new Menhera({
+export default new Menhera({
   _mount: {
     cli: [CLI]
   },
   CLI: {
-    options: {},
+    options,
     commands: {
-      "init [projectName]": init
+      _: basic,
+      init
     },
     config: {
       version: "0.0.1",
@@ -19,5 +21,3 @@ const _ = new Menhera({
     }
   }
 });
-
-export default _;

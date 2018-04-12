@@ -12,7 +12,7 @@ export default {
   config: {},
   sugar: {
     commandList: [],
-    optionList:[]
+    optionList: []
   },
   _hooks: {
     CLI: {

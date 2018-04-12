@@ -6,7 +6,7 @@ const { entries } = Object;
 
 let rootAlias = "_";
 const commandRegex = /\.*[\][<>]/g;
-const genSpace = (space, fill) => Array.from(new Array(space -  fill)).join(" ")
+const genSpace = (space, fill) => Array.from(new Array(space - fill)).join(" ");
 const useInit = {
   CLI: {
     options: {
@@ -38,17 +38,19 @@ export const _prompts = {
 
 export const options = {
   _({ _key, _val, cp }) {
-		Object.assign(this.options, _val);
-	},
-	$({_key,_val,cp}){
-		const {alias, desc} = _val
-		let keyLength = _key.length
-		let aliasLength = alias.length
-		const output = `  -${chalk.grey(_key)}${genSpace(8, keyLength)}--${chalk.grey(alias)}${genSpace(28, aliasLength)}${chalk.grey(desc)}\n`
-		this.sugar.optionList.push(output)
-	}
+    Object.assign(this.options, _val);
+  },
+  $({ _key, _val, cp }) {
+    const { alias, desc } = _val;
+    let keyLength = _key.length;
+    let aliasLength = alias.length;
+    const output = `  -${chalk.grey(_key)}${genSpace(
+      8,
+      keyLength
+    )}--${chalk.grey(alias)}${genSpace(28, aliasLength)}${chalk.grey(desc)}\n`;
+    this.sugar.optionList.push(output);
+  }
 };
-
 
 export const commands = {
   $({ _key, _val, cp }) {
@@ -56,10 +58,15 @@ export const commands = {
     this.commands[_key] = _val;
     this.Event.on(_key, exec);
     if (_key !== rootAlias) {
-			args = args.map(argv => `[${argv}]`);
-			let keyLength = _key.length
-			let argsLength = args.join(" ").length
-			const output = `  ${chalk.magenta(_key)}${genSpace(8, keyLength)}${chalk.gray(args.join(" "))}${genSpace(30, argsLength)} ${chalk.grey(desc)} \n`;
+      args = args.map(argv => `[${argv}]`);
+      let keyLength = _key.length;
+      let argsLength = args.join(" ").length;
+      const output = `  ${chalk.magenta(_key)}${genSpace(
+        8,
+        keyLength
+      )}${chalk.gray(args.join(" "))}${genSpace(30, argsLength)} ${chalk.grey(
+        desc
+      )} \n`;
       this.sugar.commandList.push(output);
     }
   }
@@ -92,7 +99,7 @@ export const config = {
 
 export const call = {
   help({ _val }) {
-		console.log(`
+    console.log(`
 ${chalk.grey("Commands:")}
 
 ${this.sugar.commandList.join("")}
