@@ -1,6 +1,6 @@
 {
   "name": "menhera-cli",
-  "version": "0.2.4-rc3",
+  "version": "0.2.4-rc4",
   "description": "",
   "main": "dist/core/index.js",
   "license": "MIT",
@@ -35,5 +35,16 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-3": "^6.24.1",
     "nodemon": "^1.17.3"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "stage-3"
+    ],
+    "plugins": [
+      [
+        "transform-runtime"
+      ]
+    ]
   }
 }
