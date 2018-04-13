@@ -5,5 +5,6 @@ yarn start
 
 yarn run dev
 
-yarn run build
+
+yarn link
 ```

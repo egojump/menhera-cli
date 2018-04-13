@@ -1,8 +1,9 @@
 {
   "name": "menhera-cli",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "description": "",
   "main": "dist/core/index.js",
+  "license": "MIT",
   "bin": {
     "mhr": "./bin/mhr"
   },
