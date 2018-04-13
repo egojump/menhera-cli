@@ -1,6 +1,6 @@
 {
   "name": "menhera-cli",
-  "version": "0.2.3",
+  "version": "0.2.4-rc1",
   "description": "",
   "main": "dist/core/index.js",
   "license": "MIT",
@@ -21,19 +21,18 @@
   "dependencies": {
     "@types/chalk": "^2.2.0",
     "@types/fs-extra": "^5.0.1",
-    "chalk": "^2.3.2",
-    "fs-extra": "^5.0.0",
-    "menhera": "^0.5.8",
-    "prompts": "^0.1.8",
-    "yargs-parser": "^10.0.0"
-  },
-  "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-3": "^6.24.1",
+    "chalk": "^2.3.2",
+    "fs-extra": "^5.0.0",
     "lerna": "^2.10.1",
+    "menhera": "^0.5.8",
     "menhera-cli": "^0.1.6",
-    "nodemon": "^1.17.3"
-  }
+    "nodemon": "^1.17.3",
+    "prompts": "^0.1.8",
+    "yargs-parser": "^10.0.0"
+  },
+  "devDependencies": {}
 }
