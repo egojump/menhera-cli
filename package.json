@@ -1,11 +1,11 @@
 {
   "name": "menhera-cli",
-  "version": "0.2.1",
+  "version": "0.2.1-fix",
   "description": "",
   "main": "dist/core/index.js",
   "license": "MIT",
   "bin": {
-    "mhr": "dist/menhera-cli/index.js"
+    "mhr": "./dist/menhera-cli/index.js"
   },
   "files": [
     "dist",
