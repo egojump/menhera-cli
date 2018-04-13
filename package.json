@@ -1,6 +1,6 @@
 {
   "name": "menhera-cli",
-  "version": "0.2.1-rc1.2",
+  "version": "0.2.1-rc1.3",
   "description": "",
   "main": "dist/core/index.js",
   "license": "MIT",
@@ -12,7 +12,7 @@
     ".templates"
   ],
   "scripts": {
-    "build": "babel ./packages --out-dir dist",
+    "build": "rm -rf dist/*; babel ./packages --out-dir dist",
     "dev": "yarn run build; npm link",
     "prepublishOnly": "npm run build"
   },
