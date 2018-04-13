@@ -1,9 +1,9 @@
 import Menhera from "menhera";
 import CLI from "../core";
 import options from "./options";
+import * as commands from "./commands";
 
 import { join } from "path";
-import { init, basic } from "./commands";
 
 export default new Menhera({
   _mount: {
@@ -11,10 +11,7 @@ export default new Menhera({
   },
   CLI: {
     options,
-    commands: {
-      _: basic,
-      init
-    },
+    commands,
     config: {
       version: "0.0.1",
       templatePath: join(__dirname, "../../.templates")

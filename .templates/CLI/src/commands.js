@@ -1,4 +1,4 @@
-export const basic = {
+export const _ = {
   exec({ _, h, CLI: { commands } }) {
     _.$use({
       CLI: {

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var basic = exports.basic = {
+var _ = exports._ = {
   exec: function exec(_ref) {
     var _ = _ref._,
         h = _ref.h,

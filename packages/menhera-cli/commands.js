@@ -2,8 +2,8 @@ import fs from "fs-extra";
 import chalk from "chalk";
 import { join } from "path";
 
-export const basic = {
-  exec({ _, h, CLI: { commands } }) {
+export const _ = {
+  exec({ _, h }) {
     _.$use({
       CLI: {
         call: {
@@ -48,7 +48,7 @@ We suggest that you begin by typing:
   
 When you installed dependencies that you can typing:
   $ yarn start
-  $ yarn run build
+  $ yarn run dev
 
   Happy hacking!
 `

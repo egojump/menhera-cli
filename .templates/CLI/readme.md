@@ -1,9 +1,9 @@
 #usage
 
 ```bash
-yarn start
-
 yarn run dev
+
+cli serve 3000
 
 yarn run build
 ```

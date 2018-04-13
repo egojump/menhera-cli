@@ -2,3 +2,7 @@ node_modules
 dist
 .ignore
 *.log
+
+.templates/*.log
+.templates/*.lock
+.templates/package-lock.json
