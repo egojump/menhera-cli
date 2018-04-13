@@ -54,14 +54,16 @@ export const options = {
 
 export const commands = {
   $({ _key, _val, cp }) {
-    let { exec, args = [], desc } = _val;
-    this.commands[_key] = _val;
-    this.Event.on(_key, exec);
-    if (_key !== rootAlias) {
+    let { name, exec, args = [], desc } = _val;
+    let key = name || _key;
+
+    this.commands[key] = _val;
+    this.Event.on(key, exec);
+    if (key !== rootAlias) {
       args = args.map(argv => `[${argv}]`);
-      let keyLength = _key.length;
+      let keyLength = key.length;
       let argsLength = args.join(" ").length;
-      const output = `  ${chalk.magenta(_key)}${genSpace(
+      const output = `  ${chalk.magenta(key)}${genSpace(
         8,
         keyLength
       )}${chalk.gray(args.join(" "))}${genSpace(30, argsLength)} ${chalk.grey(
