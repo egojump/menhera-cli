@@ -2,8 +2,8 @@
   "name": "CLI",
   "version": "0.0.1",
   "main": "dist/index.js",
-  "bin": "dist/index.js",
-  "files": ["dist"],
+  "bin": "bin/index.js",
+  "files": ["dist", "bin"],
   "license": "MIT",
   "scripts": {
     "start": "babel-node ./src/index",

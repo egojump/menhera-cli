@@ -20,8 +20,7 @@ const _ = new Menhera({
 }).$use({
   CLI: {
     config: {
-      version: "0.0.1",
-      start: true
+      version: "0.0.1"
     }
   }
 });
