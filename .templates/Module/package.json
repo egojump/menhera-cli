@@ -1,0 +1,19 @@
+{
+  "name": "null",
+  "version": "0.0.1",
+  "main": "dist",
+  "files": ["dist"],
+  "scripts": {
+    "start": "babel-node ./src/index.js",
+    "dev": "nodemon src/index.js --exec babel-node",
+    "build": "rm -rf dist ; babel ./src --out-dir dist"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-env": "^1.1.6",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "menhera": "^0.5.8"
+  }
+}

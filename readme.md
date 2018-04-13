@@ -2,7 +2,7 @@
 
 a cli plugin for menhera
 
-### Use For Cli
+### Use For CLI
 
 ```bash
 yarn global add menhera-cli
