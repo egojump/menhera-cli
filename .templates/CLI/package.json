@@ -1,11 +1,14 @@
 {
   "name": "CLI",
-  "version": "1.0.1",
-  "main": "index.js",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "bin": "dist/index.js",
+  "files": ["dist"],
   "license": "MIT",
   "scripts": {
     "start": "babel-node ./src/index",
-    "build": "babel ./src --out-dir dist"
+    "build": "babel ./src --out-dir dist",
+    "dev": "yarn run build; npm link"
   },
   "dependencies": {
     "menhera": "^0.5.8",
