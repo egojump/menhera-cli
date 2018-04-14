@@ -20,7 +20,7 @@ const _ = new Menhera({
         }
       },
       serve: {
-        name: "serve1",
+        name: "serve",
         desc: "Test run server on port",
         args: ["port"],
         exec({ port }) {
