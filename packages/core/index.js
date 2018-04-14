@@ -1,7 +1,5 @@
 import { EventEmitter } from "events";
-import { _prompts, options, commands, config, call } from "./plugin";
-
-export * from "./plugin";
+import * as CLI from "./hooks";
 
 export default {
   name: "CLI",
@@ -15,12 +13,6 @@ export default {
     optionList: []
   },
   _hooks: {
-    CLI: {
-      prompts: _prompts,
-      options,
-      commands,
-      config,
-      call
-    }
+    CLI
   }
 };

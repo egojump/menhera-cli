@@ -1,4 +1,4 @@
-import prompts from "prompts";
+import _prompts from "prompts";
 import parser from "yargs-parser";
 import chalk from "chalk";
 const { isArray } = Array;
@@ -29,10 +29,10 @@ const useInit = {
   }
 };
 
-export const _prompts = {
+export const prompts = {
   _({ _, _val }) {
     const { input, then } = _val;
-    prompts(input).then(res => then({ res, _, CLI: this }));
+    _prompts(input).then(res => then({ res, _, CLI: this }));
   }
 };
 
