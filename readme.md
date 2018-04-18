@@ -2,14 +2,6 @@
 
 a cli plugin for menhera
 
-### Use For CLI
-
-```bash
-yarn global add menhera-cli
-
-mhr init <my-project>
-```
-
 ### Use For Module
 
 ```bash
