@@ -1,33 +1,10 @@
 import parser from "yargs-parser";
 import { $, $set, $get } from "menhera";
 import chalk from "chalk";
+import { useInit } from "./config";
+import { genSpace } from "./utils";
 const { isArray } = Array;
 const { entries } = Object;
-
-const genSpace = (space, fill) => Array.from(new Array(space - fill)).join(" ");
-const useInit = ({ config }) => ({
-  CLI: {
-    commands: {
-      [config.rootAlias]: {
-        options: {
-          version: {
-            alias: "v",
-            desc: "version"
-          },
-          help: {
-            alias: "h",
-            desc: "help"
-          }
-        },
-        execs: {
-          v({ _, config: { version } }) {
-            console.log(version);
-          }
-        }
-      }
-    }
-  }
-});
 
 export const commands = {
   $({ _key, _val, cp }) {

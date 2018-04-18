@@ -19,3 +19,27 @@ export const inject = {
     }
   }
 };
+
+export const useInit = ({ config }) => ({
+  CLI: {
+    commands: {
+      [config.rootAlias]: {
+        options: {
+          version: {
+            alias: "v",
+            desc: "version"
+          },
+          help: {
+            alias: "h",
+            desc: "help"
+          }
+        },
+        execs: {
+          v({ _, config: { version } }) {
+            console.log(version);
+          }
+        }
+      }
+    }
+  }
+});
