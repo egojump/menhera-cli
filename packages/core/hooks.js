@@ -11,7 +11,7 @@ export const commands = {
       config: { rootAlias }
     } = this;
     $set(_val, inject);
-    let { name, exec, args = [], desc: cDesc = "", options = {} } = _val;
+    let { name, args = [], desc: cDesc = "", options = {} } = _val;
     let key = name || _key;
 
     this.commands[key] = _val;
@@ -99,14 +99,15 @@ export const config = {
     let out = { _, ...this, ...this.args, _key };
     const { execs = {} } = command;
     $(execs, (_key, val) => {
-      let key = _key.split("&&");
+      let key = _key.split(",");
       let check = key.every(k => {
+        if (k.startsWith("!")) {
+          const [symbol, o] = k;
+          return out[o] === undefined;
+        }
         return out[k] !== undefined;
       });
-
-      if (check) {
-        val(out);
-      }
+      check && val(out);
     });
   }
 };
