@@ -19,32 +19,24 @@ yarn add menhera menhera-cli
 ```js
 // index.js
 
-const Menhera = require("menhera").default;
-const CLI = require("../packages/core").default;
-
 const _ = new Menhera({
   _mount: {
     cli: [CLI]
   },
   CLI: {
     commands: {
-      _: {
-        desc: "root",
-        exec({ _, h }) {
-          _.$use({
-            CLI: {
-              call: {
-                help: true
-              }
-            }
-          });
+      foo: {
+        desc: "Test foo",
+        args: ["foo"],
+        execs: {
+          _({ foo }) {}
         }
       },
-      serve: {
-        desc: "Test run server on port",
-        args: ["port"],
-        exec({ port }) {
-          console.log(`server running on port:${port}`);
+      bar: {
+        desc: "Test bar",
+        args: ["bar"],
+        execs: {
+          _({ bar }) {}
         }
       }
     }
@@ -52,7 +44,8 @@ const _ = new Menhera({
 }).$use({
   CLI: {
     config: {
-      version: "0.0.1",
+      name: "example",
+      version: "0.0.2",
       start: true
     }
   }
@@ -60,7 +53,7 @@ const _ = new Menhera({
 ```
 
 ```bash
-node index.js
+node index.js -h
 ```
 
 ![preview](./assets/cli.png)
