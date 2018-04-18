@@ -53,7 +53,7 @@ node index.js -h
 ![preview](./assets/cli.png)
 
 ```js
-// option.js
+// options.js
 const Menhera = require("menhera").default;
 const CLI = require("menhera-cli").default;
 
