@@ -7,24 +7,20 @@ const _ = new Menhera({
   },
   CLI: {
     commands: {
-      _: {
-        desc: "root",
-        exec({ _, h }) {
-          _.$use({
-            CLI: {
-              call: {
-                help: true
-              }
-            }
-          });
-        }
-      },
       serve: {
         name: "serve",
+        options: {
+          help: {
+            alias: "h",
+            desc: "test help"
+          }
+        },
         desc: "Test run server on port",
         args: ["port"],
-        exec({ port }) {
-          console.log(`server running on port:${port}`);
+        execs: {
+          port({ port }) {
+            console.log(`server running on port:${port}`);
+          }
         }
       }
     }
@@ -32,6 +28,7 @@ const _ = new Menhera({
 }).$use({
   CLI: {
     config: {
+      name: "example",
       version: "0.0.1",
       start: true
     }

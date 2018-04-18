@@ -1,5 +1,6 @@
 import _prompts from "prompts";
 import parser from "yargs-parser";
+import { $, $set } from "menhera";
 import chalk from "chalk";
 const { isArray } = Array;
 const { entries } = Object;
@@ -7,27 +8,29 @@ const { entries } = Object;
 let rootAlias = "_";
 const commandRegex = /\.*[\][<>]/g;
 const genSpace = (space, fill) => Array.from(new Array(space - fill)).join(" ");
-const useInit = {
+const useInit = ({ config }) => ({
   CLI: {
-    options: {
-      v: {
-        alias: "version",
-        desc: "version"
-      },
-      h: {
-        alias: "help",
-        desc: "help"
-      }
-    },
     commands: {
       _: {
-        exec({ v, CLI: { config: { version } } }) {
-          v && console.log(version);
+        options: {
+          version: {
+            alias: "v",
+            desc: "version"
+          },
+          help: {
+            alias: "h",
+            desc: "help"
+          }
+        },
+        execs: {
+          v({ _, config: { version } }) {
+            console.log(version);
+          }
         }
       }
     }
   }
-};
+});
 
 export const prompts = {
   _({ _, _val }) {
@@ -44,33 +47,47 @@ export const options = {
     const { alias, desc } = _val;
     let keyLength = _key.length;
     let aliasLength = alias.length;
-    const output = `  -${chalk.grey(_key)}${genSpace(
-      8,
-      keyLength
-    )}--${chalk.grey(alias)}${genSpace(28, aliasLength)}${chalk.grey(desc)}\n`;
-    this.sugar.optionList.push(output);
   }
 };
 
 export const commands = {
   $({ _key, _val, cp }) {
-    let { name, exec, args = [], desc } = _val;
+    let { name, exec, args = [], desc: cDesc, options = {} } = _val;
     let key = name || _key;
 
     this.commands[key] = _val;
-    this.Event.on(key, exec);
-    if (key !== rootAlias) {
-      args = args.map(argv => `[${argv}]`);
-      let keyLength = key.length;
-      let argsLength = args.join(" ").length;
-      const output = `  ${chalk.magenta(key)}${genSpace(
-        8,
-        keyLength
-      )}${chalk.gray(args.join(" "))}${genSpace(30, argsLength)} ${chalk.grey(
-        desc
-      )} \n`;
-      this.sugar.commandList.push(output);
-    }
+
+    args = args.map(argv => `[${argv}]`);
+    let keyLength = key.length;
+    let argsLength = args.join(" ").length;
+    const commandOutput = `  ${chalk.magenta(key)}${genSpace(
+      8,
+      keyLength
+    )}${chalk.gray(args.join(" "))}${genSpace(30, argsLength)} ${chalk.grey(
+      cDesc
+    )} \n`;
+
+    let optionOutput = [];
+
+    $(options, (option, val) => {
+      const { alias, desc: oDesc } = val;
+      let aliasLength = alias.length;
+      let optionLength = option.length;
+
+      optionOutput.push(
+        `${genSpace(11, " ")}-${chalk.grey(alias)}${genSpace(
+          4,
+          ""
+        )}--${chalk.grey(option)}${genSpace(24, optionLength)}${chalk.grey(
+          oDesc
+        )}\n`
+      );
+    });
+
+    this.helper[key] = {
+      optionOutput,
+      commandOutput
+    };
   }
 };
 
@@ -80,10 +97,13 @@ export const config = {
   },
   start({ _, _val }) {
     const { target } = this.config;
-    _.$use(useInit);
+    _.$use(useInit({ ...this }));
 
     let { _: __, ...options } = parser(target || process.argv.slice(2));
     let [_key = rootAlias, ..._args] = __;
+
+    let command = this.commands[_key];
+    const { execs = {} } = command;
     for (let [key, val] of entries(options)) {
       this.args[key] = val;
       const { alias } = this.options[key] || {};
@@ -95,20 +115,43 @@ export const config = {
     args.forEach((argv, i) => {
       this.args[argv] = _args[i];
     });
-    this.Event.emit(_key, { _, CLI: this, ...this.args });
+
+    let out = { _, ...this, ...this.args };
+    _.$use({ CLI: { onRun: { [_key]: out } } });
+    $(execs, (_key, val) => {
+      let key = _key.split("&&");
+      let check = key.every(k => {
+        return this.args[k] !== undefined;
+      });
+
+      if (check) {
+        val(out);
+      }
+    });
   }
 };
 
-export const call = {
-  help({ _val }) {
-    console.log(`
+export const onRun = {
+  $({ _, _key, _val }) {
+    const { h } = _val;
+    h &&
+      _.$use({
+        CLI: {
+          help: _key
+        }
+      });
+  }
+};
+
+export function help({ _val }) {
+  let help = this.helper[_val];
+  console.log(`
 ${chalk.grey("Commands:")}
 
-${this.sugar.commandList.join("")}
+${help.commandOutput}
 
 ${chalk.grey("Options:")}
 
-${this.sugar.optionList.join("")}
+${help.optionOutput.join("")}
     `);
-  }
-};
+}

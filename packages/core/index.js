@@ -8,10 +8,7 @@ export default {
   args: {},
   commands: {},
   config: {},
-  sugar: {
-    commandList: [],
-    optionList: []
-  },
+  helper: {},
   _hooks: {
     CLI
   }

@@ -27,7 +27,7 @@
     "chalk": "^2.3.2",
     "fs-extra": "^5.0.0",
     "lerna": "^2.10.1",
-    "menhera": "^0.5.8",
+    "menhera": "^0.6.2-rc1",
     "menhera-cli": "^0.1.6",
     "prompts": "^0.1.8",
     "yargs-parser": "^10.0.0"
