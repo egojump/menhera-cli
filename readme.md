@@ -101,7 +101,7 @@ const _ = new Menhera({
 ```
 
 ```bash
-node options.js -h
+node options.js foo -h
 ```
 
 ![preview](./assets/cli-options-h.png)
