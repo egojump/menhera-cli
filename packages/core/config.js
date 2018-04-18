@@ -28,10 +28,6 @@ export const Init = ({ config }) => ({
           version: {
             alias: "v",
             desc: "version"
-          },
-          help: {
-            alias: "h",
-            desc: "help"
           }
         },
         execs: {
