@@ -1,9 +1,9 @@
 const Menhera = require("menhera").default;
-const CLI = require("../packages/core").default;
+const CLI = require("../dist/core").default;
 
 const _ = new Menhera({
   _mount: {
-    cli: [CLI]
+    CLI
   },
   CLI: {
     commands: {
