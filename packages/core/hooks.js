@@ -1,10 +1,8 @@
 import parser from "yargs-parser";
 import { $, $set, $get } from "menhera";
 import chalk from "chalk";
-import { useInit } from "./config";
-import { genSpace } from "./utils";
-const { isArray } = Array;
-const { entries } = Object;
+import { Init } from "./config";
+import { genOutput } from "./utils";
 
 export const commands = {
   $({ _key, _val, cp }) {
@@ -17,35 +15,49 @@ export const commands = {
     let key = name || _key;
 
     this.commands[key] = _val;
-    let commandOutput = [];
 
+    let commandOutput = [];
     args = args.map(argv => `[${argv}]`);
-    let keyLength = key.length;
-    let argsLength = args.join(" ").length;
     if (key !== rootAlias) {
       commandOutput.push(
-        `  ${chalk.magenta(key)}${genSpace(8, keyLength)}${chalk.gray(
-          args.join(" ")
-        )}${genSpace(30, argsLength)} ${chalk.grey(cDesc)} \n`
+        `${genOutput({
+          input: `${key}`,
+          chalkFn: chalk.magenta,
+          length: 8,
+          left: 2
+        })}${genOutput({
+          input: `${args.join(" ")}`,
+          chalkFn: chalk.grey,
+          length: 30
+        })}${genOutput({
+          input: `${cDesc}`,
+          chalkFn: chalk.grey,
+          length: 10
+        })}\n`
       );
     }
 
     let optionOutput = [];
-
     $(options, (option, val) => {
       const { alias, desc: oDesc } = val;
-      let aliasLength = alias.length;
-      let optionLength = option.length;
       this.options[option] = alias;
       this.options[alias] = option;
 
       optionOutput.push(
-        `${genSpace(11, " ")}-${chalk.grey(alias)}${genSpace(
-          4,
-          ""
-        )}--${chalk.grey(option)}${genSpace(24, optionLength)}${chalk.grey(
-          oDesc
-        )}\n`
+        `${genOutput({
+          input: `-${alias}`,
+          chalkFn: chalk.grey,
+          length: 5,
+          left: 10
+        })}${genOutput({
+          input: `--${option}`,
+          chalkFn: chalk.grey,
+          length: 25
+        })}${genOutput({
+          input: oDesc,
+          chalkFn: chalk.grey,
+          length: 10
+        })}\n`
       );
     });
 
@@ -59,31 +71,33 @@ export const commands = {
 };
 
 export const config = {
-  _({ _val }) {
+  _({ _, _val }) {
     $set(this.config, _val);
   },
   start({ _, _val }) {
-    const { target, rootAlias } = this.config;
-    _.$use(useInit({ ...this }));
+    const {
+      config: { target, rootAlias }
+    } = this;
+    _.$use(Init(this));
 
     let { _: __, ...options } = parser(target || process.argv.slice(2));
     let [_key = rootAlias, ..._args] = __;
-
-    let command = this.commands[_key];
-    const { execs = {} } = command;
-    for (let [key, val] of entries(options)) {
+    $(options, (key, val) => {
       this.args[key] = val;
       const alias = this.options[key];
       if (alias) {
         this.args[alias] = val;
       }
-    }
-    const { args = [] } = this.commands[_key] || {};
+    });
+
+    let command = this.commands[_key];
+    const { args = [] } = command;
     args.forEach((argv, i) => {
       this.args[argv] = _args[i];
     });
 
     let out = { _, ...this, ...this.args, _key };
+    const { execs = {} } = command;
     $(execs, (_key, val) => {
       let key = _key.split("&&");
       let check = key.every(k => {

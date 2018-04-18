@@ -9,7 +9,7 @@ const _ = new Menhera({
     commands: {
       foo: {
         desc: "Test foo",
-        args: ["foo"],
+        args: ["foo", "foo1"],
         execs: {
           _({ foo }) {}
         }

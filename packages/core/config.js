@@ -20,7 +20,7 @@ export const inject = {
   }
 };
 
-export const useInit = ({ config }) => ({
+export const Init = ({ config }) => ({
   CLI: {
     commands: {
       [config.rootAlias]: {
