@@ -14,8 +14,8 @@ const _ = new Menhera({
             desc: "test"
           }
         },
-        exec({ _, $0, _key }) {
-          if (!$0) {
+        exec({ _, $0, _key, options }) {
+          if (!$0 && Object.keys(options).length === 0) {
             _.$use({ CLI: { help: _key } });
           }
         }

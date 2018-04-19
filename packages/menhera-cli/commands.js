@@ -2,9 +2,8 @@ import path from "path";
 import { forceDownload, Message } from "./utils";
 
 export const _ = {
-  args: ["command"],
-  exec({ _, command, _key }) {
-    if (!command) {
+  exec({ _, $0, options, _key }) {
+    if (!$0 && Object.keys(options).length === 0) {
       _.$use({ CLI: { help: _key } });
     }
   }
