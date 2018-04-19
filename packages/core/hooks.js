@@ -144,11 +144,14 @@ ${chalk.grey("Usage:")}
 
 export const Message = {
   $({ _key, _val }) {
-    const message = this.messages[_key][_val];
-    if (typeof message === "function") {
-      console.log(message(this));
+    const messages = this.messages[_key] || {};
+    const message = messages[_val] || "";
+
+    if (message) {
+      typeof message === "function" && console.log(message(this));
+      typeof message !== "function" && console.log(message);
     } else {
-      console.log(message);
+      console.log(`can not find message with key: ${_key} val: ${_val}`);
     }
   }
 };
