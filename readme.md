@@ -10,28 +10,34 @@ yarn add menhera menhera-cli
 
 ```js
 // index.js
-const Menhera = require("menhera").default;
-const CLI = require("menhera-cli").default;
-
 const _ = new Menhera({
   _mount: {
     CLI
   },
   CLI: {
     commands: {
+      _: {
+        options: {
+          test: {
+            alias: "t",
+            desc: "test"
+          }
+        },
+        exec({ _, $0, _key }) {
+          if (!$0) {
+            _.$use({ CLI: { help: _key } });
+          }
+        }
+      },
       foo: {
         desc: "Test foo",
         args: ["foo", "foo1"],
-        execs: {
-          _({ foo }) {}
-        }
+        exec({ foo }) {}
       },
       bar: {
         desc: "Test bar",
         args: ["bar"],
-        execs: {
-          _({ bar }) {}
-        }
+        exec({ bar }) {}
       }
     }
   }

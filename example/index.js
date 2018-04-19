@@ -7,19 +7,28 @@ const _ = new Menhera({
   },
   CLI: {
     commands: {
+      _: {
+        options: {
+          test: {
+            alias: "t",
+            desc: "test"
+          }
+        },
+        exec({ _, $0, _key }) {
+          if (!$0) {
+            _.$use({ CLI: { help: _key } });
+          }
+        }
+      },
       foo: {
         desc: "Test foo",
         args: ["foo", "foo1"],
-        execs: {
-          _({ foo }) {}
-        }
+        exec({ foo }) {}
       },
       bar: {
         desc: "Test bar",
         args: ["bar"],
-        execs: {
-          _({ bar }) {}
-        }
+        exec({ bar }) {}
       }
     }
   }

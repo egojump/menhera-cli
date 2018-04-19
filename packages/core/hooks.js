@@ -1,16 +1,13 @@
 import parser from "yargs-parser";
 import { $, $set, $get } from "menhera";
 import chalk from "chalk";
-import { Init } from "./config";
 import { genOutput } from "./utils";
 
 export const commands = {
   $({ _key, _val, cp }) {
     const {
-      inject,
       config: { rootAlias }
     } = this;
-    $set(_val, inject);
     let { name, args = [], desc: cDesc = "", options = {} } = _val;
     let key = name || _key;
 
@@ -78,7 +75,6 @@ export const config = {
     const {
       config: { target, rootAlias }
     } = this;
-    _.$use(Init(this));
 
     let { _: __, ...options } = parser(target || process.argv.slice(2));
     let [_key = rootAlias, ..._args] = __;
@@ -90,7 +86,7 @@ export const config = {
       }
     });
 
-    let command = this.commands[_key];
+    let command = this.commands[_key] || {};
     const { args = [] } = command;
     args.forEach((argv, i) => {
       this.args[argv] = _args[i];
@@ -99,11 +95,22 @@ export const config = {
       this.args[`$${i}`] = _args[i];
     });
 
-    let out = { _, ...this, ...this.args, _key };
-    const { execs = {} } = command;
-    $(execs, (_key, val) => {
-      val(out);
-    });
+    let val = { _, ...this, ...this.args, _key, options, args };
+    const { exec = () => {} } = command;
+    const { help, v } = val;
+    if (help) {
+      _.$use({ CLI: { help: _key } });
+      return;
+    }
+    if (v) {
+      const {
+        config: { version }
+      } = this;
+      console.log(version);
+      return;
+    }
+
+    exec(val);
   }
 };
 
