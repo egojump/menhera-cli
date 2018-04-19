@@ -28,7 +28,7 @@ export const commands = {
         })}${genOutput({
           input: `${args.join(" ")}`,
           chalkFn: chalk.grey,
-          length: 30
+          length: 40
         })}${genOutput({
           input: `${cDesc}`,
           chalkFn: chalk.grey,
@@ -52,7 +52,7 @@ export const commands = {
         })}${genOutput({
           input: `--${option}`,
           chalkFn: chalk.grey,
-          length: 25
+          length: 35
         })}${genOutput({
           input: oDesc,
           chalkFn: chalk.grey,
@@ -95,19 +95,14 @@ export const config = {
     args.forEach((argv, i) => {
       this.args[argv] = _args[i];
     });
+    _args.forEach((argv, i) => {
+      this.args[`$${i}`] = _args[i];
+    });
 
     let out = { _, ...this, ...this.args, _key };
     const { execs = {} } = command;
     $(execs, (_key, val) => {
-      let key = _key.split(",");
-      let check = key.every(k => {
-        if (k.startsWith("!")) {
-          const [symbol, o] = k;
-          return out[o] === undefined;
-        }
-        return out[k] !== undefined;
-      });
-      check && val(out);
+      val(out);
     });
   }
 };
@@ -136,3 +131,30 @@ ${chalk.grey("Options:")}
 ${help.optionOutput.join("")}
     `);
 }
+
+export function usage({ _val }) {
+  let help = this.helper[_val];
+  help &&
+    console.log(` 
+  
+${chalk.grey("Usage:")}
+              
+    ${help.commandOutput.join("")}`);
+}
+
+export const Message = {
+  $({ _key, _val }) {
+    const message = this.messages[_key][_val];
+    if (typeof message === "function") {
+      console.log(message(this));
+    } else {
+      console.log(message);
+    }
+  }
+};
+
+export const messages = {
+  _({ _val }) {
+    Object.assign(this.messages, _val);
+  }
+};

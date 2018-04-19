@@ -20,14 +20,10 @@ const _ = new Menhera({
           }
         },
         execs: {
-          "f,!b"({ foo }) {
-            console.log(`just option foo: ${foo} `);
-          },
-          "!f,b"({ bar }) {
-            console.log(`just option bar: ${bar} `);
-          },
-          "f,b"({ foo, bar }) {
-            console.log(`both foo: ${foo} and bar: ${bar}`);
+          _({ _, _key: usage, foo, bar }) {
+            if (!foo || !bar) {
+              _.$use({ CLI: { usage } });
+            }
           }
         }
       }

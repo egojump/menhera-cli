@@ -4,7 +4,7 @@ export const inject = {
       if (tar) {
         return tar;
       } else {
-        return { alias: "h", desc: "test help" };
+        return { alias: "h", desc: "help" };
       }
     }
   },
@@ -13,8 +13,10 @@ export const inject = {
       if (tar) {
         tar(data);
       } else {
-        const { _key, _ } = data;
-        _.$use({ CLI: { help: _key } });
+        const { _key, _, $0 } = data;
+        if (!$0) {
+          _.$use({ CLI: { help: _key } });
+        }
       }
     }
   }

@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 import { $get } from "menhera";
-import { commands, config, help } from "./hooks";
+import * as CLI from "./hooks";
 import { inject } from "./config";
 
 export default {
@@ -9,14 +9,11 @@ export default {
   options: {},
   args: {},
   commands: {},
+  messages: {},
   inject,
   helper: {},
   _hooks: {
-    CLI: {
-      commands,
-      config,
-      help
-    }
+    CLI
   },
   config: {
     version: "0.0.1",
