@@ -13,8 +13,8 @@ export const inject = {
       if (tar) {
         tar(data);
       } else {
-        const { _key, _, $0 } = data;
-        if (!$0) {
+        const { _key, _, $0, h } = data;
+        if (!$0 && h) {
           _.$use({ CLI: { help: _key } });
         }
       }
