@@ -5,7 +5,12 @@ import * as CLI from "./hooks";
 export default {
   name: "CLI",
   Event: new EventEmitter(),
-  options: {},
+  alias: {
+    help: "h",
+    h: "help",
+    version: "v",
+    v: "version"
+  },
   args: {},
   commands: {},
   messages: {},

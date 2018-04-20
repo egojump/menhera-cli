@@ -2600,6 +2600,14 @@ lodash._reinterpolate@~3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
 
+lodash.get@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+
+lodash.set@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.npmjs.org/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
+
 lodash.template@^4.0.2:
   version "4.4.0"
   resolved "https://registry.npmjs.org/lodash.template/-/lodash.template-4.4.0.tgz#e73a0385c8355591746e020b99679c690e68fba0"
@@ -2698,12 +2706,12 @@ menhera@^0.5.8:
     "@types/lodash" "^4.14.104"
     lodash "^4.17.5"
 
-menhera@^0.6.2-rc1:
-  version "0.6.2-rc1"
-  resolved "https://registry.npmjs.org/menhera/-/menhera-0.6.2-rc1.tgz#b09ada76ce7c15247f07cdb66a4db2f7557378c6"
+menhera@^0.6.4-rc3:
+  version "0.6.4-rc3"
+  resolved "https://registry.npmjs.org/menhera/-/menhera-0.6.4-rc3.tgz#4dd76994878d3c446e90286c6920fff373ec8054"
   dependencies:
-    "@types/lodash" "^4.14.104"
-    lodash "^4.17.5"
+    lodash.get "^4.4.2"
+    lodash.set "^4.3.2"
 
 meow@^3.3.0:
   version "3.7.0"

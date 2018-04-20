@@ -37,8 +37,8 @@ export const commands = {
     let optionOutput = [];
     $(options, (option, val) => {
       const { alias, desc: oDesc } = val;
-      this.options[option] = alias;
-      this.options[alias] = option;
+      this.alias[option] = alias;
+      this.alias[alias] = option;
 
       optionOutput.push(
         `${genOutput({
@@ -80,7 +80,7 @@ export const config = {
     let [_key = rootAlias, ..._args] = __;
     $(options, (key, val) => {
       this.args[key] = val;
-      const alias = this.options[key];
+      const alias = this.alias[key];
       if (alias) {
         this.args[alias] = val;
       }
@@ -95,7 +95,7 @@ export const config = {
       this.args[`$${i}`] = _args[i];
     });
 
-    let val = { _, ...this, ...this.args, _key, options, args };
+    let val = { _, ...this, ...this.args, _key, options, args: _args };
     const { exec = () => {} } = command;
     const { help, v } = val;
     if (help) {
@@ -119,7 +119,7 @@ export function help({ _val }) {
   const {
     config: { rootAlias }
   } = this;
-  if (_val !== rootAlias) {
+  if (_val !== rootAlias || !_val) {
     help = this.helper[_val];
   } else {
     help = {
