@@ -2,19 +2,23 @@
 
 a cli plugin for menhera
 
-# Usage
+## Use for CLI Tools
 
 ```bash
 $ yarn global add menehra-cli
+```
 
+#### Install Template
+
+```bash
 $ mhr init uu-z/template-cli mycli
 ```
 
-### Use For Module
-
 ```bash
-$ yarn add menhera menhera-cli
+$ mhr init uu-z/template-module mymodule
 ```
+
+## Use For Module
 
 ```js
 // index.js
