@@ -5,7 +5,7 @@ a cli plugin for menhera
 ## Use for CLI Tools
 
 ```bash
-$ yarn global add menehra-cli
+$ yarn global add menhera-cli
 ```
 
 #### Install Template

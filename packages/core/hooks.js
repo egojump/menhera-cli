@@ -1,5 +1,5 @@
 import parser from "yargs-parser";
-import { $, $set, $get } from "menhera";
+import { $set, $get, $ } from "menhera";
 import chalk from "chalk";
 import { genOutput, ENV } from "./utils";
 

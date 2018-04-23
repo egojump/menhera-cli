@@ -1,49 +1,30 @@
 {
   "name": "menhera-cli",
-  "version": "0.2.9-rc1",
+  "version": "0.3.0",
   "description": "",
-  "main": "dist/core/index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "bin": {
-    "mhr": "./bin/mhr"
+    "mhr": "./dist/cli.js"
   },
-  "files": [
-    "dist",
-    "bin"
-  ],
+  "files": ["dist", "bin"],
   "scripts": {
-    "build": "rm -rf ./dist; babel ./packages --out-dir dist",
+    "build":
+      "bili ./packages/core/index.js ./packages/menhera-cli/cli.js --filename [name].js",
     "dev": "yarn run build; npm link",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "yarn run build"
   },
   "author": "chito<ncysatnaf@gmail.com>",
   "dependencies": {
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-3": "^6.24.1",
     "chalk": "^2.3.2",
     "download-git-repo": "^1.0.2",
     "fs-extra": "^5.0.0",
-    "menhera": "^0.6.4-rc3",
+    "menhera": "^0.6.7-rc5",
     "yargs-parser": "^10.0.0"
   },
   "devDependencies": {
-    "@types/chalk": "^2.2.0",
-    "@types/fs-extra": "^5.0.1",
-    "babel-cli": "^6.26.0",
+    "bili": "^3.1.0",
     "lerna": "^2.10.1",
-    "menhera-cli": "^0.1.6",
     "nodemon": "^1.17.3"
-  },
-  "babel": {
-    "presets": [
-      "env",
-      "stage-3"
-    ],
-    "plugins": [
-      [
-        "transform-runtime"
-      ]
-    ]
   }
 }

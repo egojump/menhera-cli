@@ -1,5 +1,5 @@
 import path from "path";
-import { forceDownload, Message } from "./utils";
+import { forceDownload } from "./utils";
 
 export const _ = {
   exec({ _, _key, env }) {
