@@ -20,6 +20,12 @@ $ mhr init uu-z/template-module mymodule
 
 ## Use For Module
 
+```bash
+$ yarn add menhera menhera-cli
+```
+
+#### example
+
 ```js
 // index.js
 const Menhera = require("menhera").default;
