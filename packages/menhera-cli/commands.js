@@ -2,8 +2,8 @@ import path from "path";
 import { forceDownload, Message } from "./utils";
 
 export const _ = {
-  exec({ _, $0, options, _key }) {
-    if (!$0 && Object.keys(options).length === 0) {
+  exec({ _, _key, env }) {
+    if (env.NONE_INPUTS) {
       _.$use({ CLI: { help: _key } });
     }
   }
@@ -19,14 +19,18 @@ export const init = {
     }
   },
   async exec(data) {
-    const { _, _key, $0, $1, clone = false, h } = data;
-    if (!$0 || !$1) {
+    const { _, _key, templateName, projectName, clone = false, h, env } = data;
+    if (env.NONE_INPUTS) {
+      _.$use({ CLI: { help: _key } });
+      return;
+    }
+    if (env.NONE_FULL_ARGS) {
       _.$use({ CLI: { usage: _key } });
       return;
     }
 
-    let desc = path.join(process.cwd(), $1);
-    let err = await forceDownload($0, desc, { clone });
+    let desc = path.join(process.cwd(), projectName);
+    let err = await forceDownload(templateName, desc, { clone });
     _.$use({
       CLI: { Message: { download: err ? "fail" : "success" } }
     });

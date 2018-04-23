@@ -10,6 +10,9 @@ yarn add menhera menhera-cli
 
 ```js
 // index.js
+const Menhera = require("menhera").default;
+const CLI = require("menhera-cli").default;
+
 const _ = new Menhera({
   _mount: {
     CLI
@@ -23,8 +26,8 @@ const _ = new Menhera({
             desc: "test"
           }
         },
-        exec({ _, $0, _key }) {
-          if (!$0) {
+        exec({ _, _key, env }) {
+          if (env.NONE_INPUTS) {
             _.$use({ CLI: { help: _key } });
           }
         }

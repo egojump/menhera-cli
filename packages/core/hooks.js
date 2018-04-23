@@ -1,7 +1,7 @@
 import parser from "yargs-parser";
 import { $, $set, $get } from "menhera";
 import chalk from "chalk";
-import { genOutput } from "./utils";
+import { genOutput, ENV } from "./utils";
 
 export const commands = {
   $({ _key, _val, cp }) {
@@ -77,7 +77,7 @@ export const config = {
     } = this;
 
     let { _: __, ...options } = parser(target || process.argv.slice(2));
-    let [_key = rootAlias, ..._args] = __;
+    let [_key = rootAlias, ...args] = __;
     $(options, (key, val) => {
       this.args[key] = val;
       const alias = this.alias[key];
@@ -87,15 +87,16 @@ export const config = {
     });
 
     let command = this.commands[_key] || {};
-    const { args = [] } = command;
-    args.forEach((argv, i) => {
-      this.args[argv] = _args[i];
-    });
+    const { args: _args = [] } = command;
     _args.forEach((argv, i) => {
-      this.args[`$${i}`] = _args[i];
+      this.args[argv] = args[i];
+    });
+    args.forEach((argv, i) => {
+      this.args[`$${i}`] = args[i];
     });
 
-    let val = { _, ...this, ...this.args, _key, options, args: _args };
+    let out = { _, ...this, ...this.args, _key, options, args };
+    let val = { ...out, env: ENV({ ...out, _args }) };
     const { exec = () => {} } = command;
     const { help, v } = val;
     if (help) {
