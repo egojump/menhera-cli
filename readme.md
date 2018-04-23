@@ -2,10 +2,18 @@
 
 a cli plugin for menhera
 
+# Usage
+
+```bash
+$ yarn global add menehra-cli
+
+$ mhr init uu-z/template-cli mycli
+```
+
 ### Use For Module
 
 ```bash
-yarn add menhera menhera-cli
+$ yarn add menhera menhera-cli
 ```
 
 ```js
@@ -56,7 +64,7 @@ const _ = new Menhera({
 ```
 
 ```bash
-node index.js -h
+$ node index.js -h
 ```
 
 ![preview](./assets/cli.png)
