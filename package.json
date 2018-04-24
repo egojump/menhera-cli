@@ -1,6 +1,6 @@
 {
   "name": "menhera-cli",
-  "version": "0.3.1-rc3",
+  "version": "0.3.1-rc4",
   "description": "",
   "main": "dist/index.js",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "chalk": "^2.3.2",
     "download-git-repo": "^1.0.2",
     "fs-extra": "^5.0.0",
-    "menhera": "^0.6.7-rc5",
+    "menhera": "^0.6.7-rc8",
     "yargs-parser": "^10.0.0"
   },
   "devDependencies": {
