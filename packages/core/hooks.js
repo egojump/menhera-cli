@@ -176,6 +176,6 @@ export const Message = {
 
 export const messages = {
   _({ _val }) {
-    Object.assign(this.messages, _val);
+    this.messages = Object.assign({}, this.messages, _val);
   }
 };

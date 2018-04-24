@@ -1,11 +1,9 @@
-import { EventEmitter } from "events";
 import { $get } from "menhera";
 import * as CLI from "./hooks";
 import * as messages from "./messages";
 
 export default {
   name: "CLI",
-  Event: new EventEmitter(),
   alias: {
     help: "h",
     h: "help",
