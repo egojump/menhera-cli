@@ -6,6 +6,7 @@ a cli plugin for menhera
 
 ```bash
 $ yarn global add menhera-cli
+$ npm install menhera-cli -g
 ```
 
 #### Install Template
