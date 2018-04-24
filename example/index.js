@@ -1,7 +1,7 @@
-const Menhera = require("menhera").default;
-const CLI = require("../dist/core").default;
+const mhr = require("menhera").default;
+const CLI = require("../dist");
 
-const _ = new Menhera({
+mhr.$use({
   _mount: {
     CLI
   },
@@ -30,10 +30,7 @@ const _ = new Menhera({
         args: ["bar"],
         exec({ bar }) {}
       }
-    }
-  }
-}).$use({
-  CLI: {
+    },
     config: {
       name: "example",
       version: "0.0.2",

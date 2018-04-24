@@ -10,7 +10,6 @@ $ yarn global add menhera-cli
 
 ```bash
 $ npm install menhera-cli -g
-
 ```
 
 #### Install Template
@@ -33,10 +32,10 @@ $ yarn add menhera menhera-cli
 
 ```js
 // index.js
-const Menhera = require("menhera").default;
-const CLI = require("menhera-cli").default;
+const mhr = require("menhera").default;
+const CLI = require("menhera-cli");
 
-const _ = new Menhera({
+mhr.$use({
   _mount: {
     CLI
   },
@@ -65,10 +64,7 @@ const _ = new Menhera({
         args: ["bar"],
         exec({ bar }) {}
       }
-    }
-  }
-}).$use({
-  CLI: {
+    },
     config: {
       name: "example",
       version: "0.0.2",
@@ -79,7 +75,7 @@ const _ = new Menhera({
 ```
 
 ```bash
-$ node index.js -h
+$ node index.js
 ```
 
 ![preview](./assets/cli.png)
