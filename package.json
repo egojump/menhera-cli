@@ -1,19 +1,18 @@
 {
   "name": "menhera-cli",
-  "version": "0.3.1-rc4",
+  "version": "0.3.1-rc5",
   "description": "",
   "main": "dist/index.js",
   "license": "MIT",
   "bin": {
     "mhr": "dist/cli.js"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
-    "build": "bili ./packages/core/index.js ./packages/menhera-cli/cli.js --filename [name].js",
+    "build":
+      "bili ./packages/core/index.js ./packages/menhera-cli/cli.js --filename [name].js",
     "dev": "yarn run build; npm link",
-    "prepublishOnly": "yarn run build"
+    "prepublishOnly": "yarn build"
   },
   "author": "chito<ncysatnaf@gmail.com>",
   "dependencies": {
@@ -34,11 +33,5 @@
     "lerna": "^2.10.1",
     "menhera-cli": "^0.3.1-rc2",
     "nodemon": "^1.17.3"
-  },
-  "babel": {
-    "presets": [
-      "env",
-      "stage-3"
-    ]
   }
 }
