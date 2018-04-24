@@ -20,3 +20,8 @@ export const ENV = ({ $0, _args, args, options }) => {
   env.NONE_FULL_ARGS = _args.length !== args.length;
   return env;
 };
+
+export const RandomKeyFromObject = object =>
+  RandomKeyFromArray(Object.keys(object));
+export const RandomKeyFromArray = array =>
+  array[Math.floor(Math.random() * array.length)];

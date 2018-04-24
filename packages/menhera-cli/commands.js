@@ -30,9 +30,25 @@ export const init = {
     }
 
     let desc = path.join(process.cwd(), projectName);
+    _.$use({
+      CLI: {
+        Message: {
+          spinner: {
+            mode: "random",
+            text: "downloading...",
+            status: "start"
+          }
+        }
+      }
+    });
     let err = await forceDownload(templateName, desc, { clone });
     _.$use({
-      CLI: { Message: { download: err ? "fail" : "success" } }
+      CLI: {
+        Message: {
+          download: err ? "fail" : "success",
+          spinner: { status: "stop" }
+        }
+      }
     });
   }
 };

@@ -5,8 +5,13 @@ export const download = {
 
 sorry, download failed. 
       `,
-  success: ({ args: { projectName, templateName } }) =>
-    chalk.green(`
+  success: ({
+    CLI: {
+      args: { projectName, templateName }
+    }
+  }) =>
+    console.log(
+      chalk.green(`
 Success! Created <${projectName}> with template <${templateName}>
 
 We suggest that you begin by typing:
@@ -16,4 +21,5 @@ We suggest that you begin by typing:
 
   Happy hacking!
 `)
+    )
 };
