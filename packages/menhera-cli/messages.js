@@ -3,7 +3,7 @@ import cliSpinner from "cli-spinners";
 import ora from "ora";
 import { RandomKeyFromObject, RandomKeyFromArray } from "./utils";
 
-const download = {
+export const download = {
   fail: () =>
     console.log(`
 
