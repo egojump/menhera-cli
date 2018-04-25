@@ -3,10 +3,6 @@ import { $set, $get, $ } from "menhera";
 import chalk from "chalk";
 import { genOutput, ENV } from "./utils";
 
-export const plugins = {
-  $({ _key, _val, cp }) {}
-};
-
 export const commands = {
   $({ _key, _val, cp }) {
     const {
@@ -77,40 +73,44 @@ export const config = {
   },
   start({ _, _val }) {
     const {
-      config: { target, rootAlias }
+      config: { target, rootAlias, version }
     } = this;
 
     let { _: __, ...options } = parser(target || process.argv.slice(2));
     let [_key = rootAlias, ...args] = __;
+    let command = this.commands[_key] || {};
+    const {
+      args: _args = [],
+      exec = () => {},
+      options: _options = {}
+    } = command;
+    $(_options, (key, val) => {
+      let _default = _options[key].default;
+      this.args[key] = _default;
+      let alias = this.alias[key];
+      alias && (this.args[alias] = _default);
+    });
     $(options, (key, val) => {
       this.args[key] = val;
-      const alias = this.alias[key];
-      if (alias) {
-        this.args[alias] = val;
-      }
+      let alias = this.alias[key];
+      alias && (this.args[alias] = val);
     });
-
-    let command = this.commands[_key] || {};
-    const { args: _args = [] } = command;
-    _args.forEach((argv, i) => {
+    $(_args, (i, argv) => {
       this.args[argv] = args[i];
     });
-    args.forEach((argv, i) => {
+    $(args, i => {
       this.args[`$${i}`] = args[i];
     });
 
-    let out = { _, CLI: this, ...this.args, _key, options, args };
-    let val = { ...out, env: ENV({ ...out, _args }) };
-    const { exec = () => {} } = command;
+    let val = { _, CLI: this, ...this.args, _key, options, args, _args };
+    val.env = ENV(val);
+
     const { help, v } = val;
     if (help) {
       _.$use({ CLI: { help: _key } });
       return;
     }
     if (v) {
-      const {
-        config: { version }
-      } = this;
       console.log(version);
       return;
     }
@@ -153,29 +153,3 @@ ${chalk.grey("Usage:")}
               
     ${help.commandOutput.join("")}`);
 }
-
-// export const Message = {
-//   $({ _key, _val }) {
-//     const messages = this.messages[_key] || {};
-//     let val = { CLI: this, _key, _val };
-//     if (typeof messages === "function") {
-//       messages(val);
-//       return;
-//     }
-
-//     const message = messages[_val] || "";
-
-//     if (message) {
-//       typeof message === "function" && message(val);
-//       typeof message !== "function" && console.log(message);
-//     } else {
-//       console.log(`can not find message with key: ${_key} val: ${_val}`);
-//     }
-//   }
-// };
-
-// export const messages = {
-//   _({ _val }) {
-//     this.messages = Object.assign({}, this.messages, _val);
-//   }
-// };

@@ -15,11 +15,12 @@ export const init = {
   options: {
     clone: {
       alias: "c",
-      desc: "clone repo"
+      desc: "clone repo",
+      default: false
     }
   },
   async exec(data) {
-    const { _, _key, templateName, projectName, clone = false, h, env } = data;
+    const { _, _key, templateName, projectName, clone, h, env } = data;
     if (env.NONE_INPUTS) {
       _.$use({ CLI: { help: _key } });
       return;

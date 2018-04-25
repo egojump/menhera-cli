@@ -12,7 +12,7 @@ export const genOutput = ({ input, chalkFn, length, left = 0, right = 0 }) => {
   )}`;
 };
 
-export const ENV = ({ $0, _args, args, options }) => {
+export const ENV = ({ _args, args, options }) => {
   let env = {};
   env.NONE_ARGS = args.length === 0;
   env.NONE_OPTIONS = Object.keys(options).length === 0;

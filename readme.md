@@ -43,10 +43,7 @@ mhr.$use({
     commands: {
       _: {
         options: {
-          test: {
-            alias: "t",
-            desc: "test"
-          }
+          test: { alias: "t", desc: "test", default: null }
         },
         exec({ _, _key, env }) {
           if (env.NONE_INPUTS) {
