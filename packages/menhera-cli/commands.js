@@ -28,26 +28,24 @@ export const init = {
       _.$use({ CLI: { usage: _key } });
       return;
     }
-
     let desc = path.join(process.cwd(), projectName);
     _.$use({
-      CLI: {
-        Message: {
-          spinner: {
-            mode: "random",
-            text: "downloading...",
-            status: "start"
-          }
+      Message: {
+        spinner: {
+          mode: "random",
+          text: "downloading...",
+          status: "start"
         }
       }
     });
-    let err = await forceDownload(templateName, desc, { clone });
+    let download = {};
+    (await forceDownload(templateName, desc, { clone }))
+      ? (download.fail = true)
+      : (download.success = { templateName, projectName });
     _.$use({
-      CLI: {
-        Message: {
-          download: err ? "fail" : "success",
-          spinner: { status: "stop" }
-        }
+      Message: {
+        download,
+        spinner: { status: "stop" }
       }
     });
   }

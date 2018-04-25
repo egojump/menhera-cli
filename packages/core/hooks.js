@@ -154,28 +154,28 @@ ${chalk.grey("Usage:")}
     ${help.commandOutput.join("")}`);
 }
 
-export const Message = {
-  $({ _key, _val }) {
-    const messages = this.messages[_key] || {};
-    let val = { CLI: this, _key, _val };
-    if (typeof messages === "function") {
-      messages(val);
-      return;
-    }
+// export const Message = {
+//   $({ _key, _val }) {
+//     const messages = this.messages[_key] || {};
+//     let val = { CLI: this, _key, _val };
+//     if (typeof messages === "function") {
+//       messages(val);
+//       return;
+//     }
 
-    const message = messages[_val] || "";
+//     const message = messages[_val] || "";
 
-    if (message) {
-      typeof message === "function" && message(val);
-      typeof message !== "function" && console.log(message);
-    } else {
-      console.log(`can not find message with key: ${_key} val: ${_val}`);
-    }
-  }
-};
+//     if (message) {
+//       typeof message === "function" && message(val);
+//       typeof message !== "function" && console.log(message);
+//     } else {
+//       console.log(`can not find message with key: ${_key} val: ${_val}`);
+//     }
+//   }
+// };
 
-export const messages = {
-  _({ _val }) {
-    this.messages = Object.assign({}, this.messages, _val);
-  }
-};
+// export const messages = {
+//   _({ _val }) {
+//     this.messages = Object.assign({}, this.messages, _val);
+//   }
+// };

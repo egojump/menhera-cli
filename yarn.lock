@@ -3722,6 +3722,26 @@ menhera-cli@^0.3.1-rc2:
     menhera "^0.6.7-rc5"
     yargs-parser "^10.0.0"
 
+menhera-cli@^0.3.1-rc4:
+  version "0.3.1-rc7"
+  resolved "https://registry.npmjs.org/menhera-cli/-/menhera-cli-0.3.1-rc7.tgz#5b5eb929974d42bd6e9c20f7d389790b56d579c9"
+  dependencies:
+    "@types/log-update" "^2.0.0"
+    "@types/ora" "^1.3.4"
+    chalk "^2.3.2"
+    cli-spinners "^1.3.1"
+    download-git-repo "^1.0.2"
+    fs-extra "^5.0.0"
+    menhera "^0.6.7-rc8"
+    ora "^2.0.0"
+    yargs-parser "^10.0.0"
+
+menhera-message@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npmjs.org/menhera-message/-/menhera-message-0.0.1.tgz#9ba8eb887d56e4091d7cb951392641ebc84fcf06"
+  dependencies:
+    menhera-cli "^0.3.1-rc4"
+
 menhera@^0.6.7-rc5:
   version "0.6.7-rc5"
   resolved "https://registry.npmjs.org/menhera/-/menhera-0.6.7-rc5.tgz#29bddfc859f2570da6dd9550bd809a6d507aa9a2"
@@ -3733,6 +3753,14 @@ menhera@^0.6.7-rc5:
 menhera@^0.6.7-rc9:
   version "0.6.7-rc9"
   resolved "https://registry.npmjs.org/menhera/-/menhera-0.6.7-rc9.tgz#24dedca47bc80d8bb265483b763071814a3953fe"
+  dependencies:
+    lodash.get "^4.4.2"
+    lodash.has "^4.5.2"
+    lodash.set "^4.3.2"
+
+menhera@^0.6.8-rc1:
+  version "0.6.8-rc1"
+  resolved "https://registry.npmjs.org/menhera/-/menhera-0.6.8-rc1.tgz#a8f4659e66331219cd30a8071ce09144584362a0"
   dependencies:
     lodash.get "^4.4.2"
     lodash.has "^4.5.2"

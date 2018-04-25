@@ -3,13 +3,15 @@ import Menhera from "menhera";
 import CLI from "../core";
 import * as messages from "./messages";
 import * as commands from "./commands";
+import Message from "menhera-message";
 
 export default Menhera.$use({
   _mount: {
-    CLI
+    CLI,
+    Message
   },
+  messages,
   CLI: {
-    messages,
     commands,
     config: {
       name: "mhr",
@@ -17,4 +19,4 @@ export default Menhera.$use({
       start: true
     }
   }
-})
+});
