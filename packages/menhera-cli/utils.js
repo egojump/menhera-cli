@@ -18,6 +18,6 @@ export const forceDownload = async (repo, desc, options) => {
 };
 
 export const RandomKeyFromObject = object =>
-  RandomKeyFromArray(Object.keys(object));
+  object[RandomKeyFromArray(Object.keys(object))];
 export const RandomKeyFromArray = array =>
   array[Math.floor(Math.random() * array.length)];

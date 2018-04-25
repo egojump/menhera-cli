@@ -47,7 +47,7 @@ export const spinner = ({ _key, _val }) => {
   if (status == "start") {
     let args = {};
     if (mode === "random") {
-      let randomSpinner = cliSpinner[RandomKeyFromObject(cliSpinner)];
+      let randomSpinner = RandomKeyFromObject(cliSpinner);
       let color = RandomKeyFromArray(colors);
       args.spinner = randomSpinner;
       args.color = color;
