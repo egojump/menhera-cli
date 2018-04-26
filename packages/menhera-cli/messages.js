@@ -9,7 +9,7 @@ export const download = {
 
 sorry, download failed. 
       `),
-  success: ({ projectName, templateName }) =>
+  success: ({ _val: { projectName, templateName } }) =>
     console.log(
       chalk.green(`
 Success! Created <${projectName}> with template <${templateName}>
