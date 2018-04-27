@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-import Menhera from "menhera";
+import Mhr from "menhera";
 import CLI from "../core";
 import * as messages from "./messages";
 import * as commands from "./commands";
 import Message from "menhera-message";
 
-export default Menhera.$use({
+export default Mhr.$use({
   _mount: {
     CLI,
     Message

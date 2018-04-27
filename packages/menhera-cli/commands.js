@@ -12,13 +12,11 @@ export const _ = {
 export const init = {
   desc: "Init Project",
   args: ["templateName", "projectName"],
-  options: {
-    clone: {
-      alias: "c",
-      desc: "clone repo",
-      default: false
-    }
+  examples: {
+    "init:cli": "init uu-z/template-cli mycli",
+    "init:module": "init uu-z/template-module mymodule"
   },
+  options: { clone: { alias: "c", desc: "clone repo", default: false } },
   async exec(data) {
     const { _, _key, templateName, projectName, clone, h, env } = data;
     if (env.NONE_INPUTS) {
@@ -40,7 +38,9 @@ export const init = {
       }
     });
     let download = {};
-    (await forceDownload(templateName, desc, { clone }))
+    (await forceDownload(templateName, desc, {
+      clone
+    }))
       ? (download.fail = true)
       : (download.success = { templateName, projectName });
     _.$use({

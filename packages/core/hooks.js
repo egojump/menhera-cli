@@ -8,10 +8,12 @@ export const commands = {
     const {
       config: { rootAlias }
     } = this;
-    let { name, args = [], desc: cDesc = "", options = {} } = _val;
+    let { name, args = [], alias, examples, desc: cDesc = "", options = {} } = _val;
     let key = name || _key;
 
     this.commands[key] = _val;
+    alias && (this.command[alias] = _val);
+    examples && $set(this.examples, examples);
 
     let commandOutput = [];
     args = args.map(argv => `[${argv}]`);
@@ -79,11 +81,7 @@ export const config = {
     let { _: __, ...options } = parser(target || process.argv.slice(2));
     let [_key = rootAlias, ...args] = __;
     let command = this.commands[_key] || {};
-    const {
-      args: _args = [],
-      exec = () => {},
-      options: _options = {}
-    } = command;
+    const { args: _args = [], exec = () => {}, options: _options = {} } = command;
     $(_options, (key, val) => {
       let _default = _options[key].default;
       this.args[key] = _default;

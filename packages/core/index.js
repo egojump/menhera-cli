@@ -1,5 +1,5 @@
-import { $get } from "menhera";
 import * as CLI from "./hooks";
+import * as commands from "./commands";
 
 export default {
   name: "CLI",
@@ -10,7 +10,8 @@ export default {
     v: "version"
   },
   args: {},
-  commands: {},
+  commands,
+  examples: {},
   helper: {},
   _hooks: {
     CLI
