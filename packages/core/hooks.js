@@ -4,7 +4,7 @@ import chalk from "chalk";
 import { genOutput, ENV } from "./utils";
 
 export const commands = {
-  $({ _key, _val, cp }) {
+  $({ _, _key, _val, cp }) {
     const {
       config: { rootAlias }
     } = this;
@@ -12,7 +12,7 @@ export const commands = {
     let key = name || _key;
 
     this.commands[key] = _val;
-    alias && (this.command[alias] = _val);
+    alias && alias !== key && _.$use({ "CLI.commands": { [alias]: _val } });
     examples && $set(this.examples, examples);
 
     let commandOutput = [];

@@ -3758,9 +3758,9 @@ menhera@^0.6.7-rc8:
     lodash.has "^4.5.2"
     lodash.set "^4.3.2"
 
-menhera@^0.6.8-rc1:
-  version "0.6.8-rc1"
-  resolved "https://registry.npmjs.org/menhera/-/menhera-0.6.8-rc1.tgz#a8f4659e66331219cd30a8071ce09144584362a0"
+menhera@^0.7.1-rc:
+  version "0.7.1-rc"
+  resolved "https://registry.npmjs.org/menhera/-/menhera-0.7.1-rc.tgz#611bcc96b3064843c6ccb010a040e207b213f023"
   dependencies:
     lodash.get "^4.4.2"
     lodash.has "^4.5.2"

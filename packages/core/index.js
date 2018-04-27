@@ -10,7 +10,7 @@ export default {
     v: "version"
   },
   args: {},
-  commands,
+  commands: {},
   examples: {},
   helper: {},
   _hooks: {
@@ -19,5 +19,8 @@ export default {
   config: {
     version: "0.0.1",
     rootAlias: "_"
+  },
+  CLI: {
+    commands
   }
 };
