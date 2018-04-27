@@ -7,7 +7,9 @@ export default {
     help: "h",
     h: "help",
     version: "v",
-    v: "version"
+    v: "version",
+    examples: "e",
+    e: "examples"
   },
   args: {},
   commands: {},
@@ -17,6 +19,7 @@ export default {
     CLI
   },
   config: {
+    name: "cli",
     version: "0.0.1",
     rootAlias: "_"
   },
