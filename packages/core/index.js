@@ -4,12 +4,15 @@ import * as commands from "./commands";
 export default {
   name: "CLI",
   alias: {
-    help: "h",
-    h: "help",
-    version: "v",
-    v: "version",
-    examples: "e",
-    e: "examples"
+    options: {
+      help: "h",
+      h: "help",
+      version: "v",
+      v: "version",
+      examples: "e",
+      e: "examples"
+    },
+    commands: {}
   },
   args: {},
   commands: {},

@@ -3,9 +3,9 @@ import { root } from "postcss";
 export const examples = {
   desc: "Examples",
   alias: "e",
-  args: ["key"],
+  args: ["example"],
   async exec(data) {
-    const { _, env, key, CLI } = data;
+    const { _, env, example, CLI } = data;
     const {
       config: { name, rootAlias },
       examples
@@ -15,7 +15,7 @@ export const examples = {
       return;
     }
 
-    let val = examples[key];
+    let val = examples[example];
     let target = val.split(" ");
 
     _.$use({ CLI: { config: { target, start: true } } });

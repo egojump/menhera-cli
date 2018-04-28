@@ -20,12 +20,22 @@ mhr.$use({
       foo: {
         desc: "Test foo",
         args: ["foo", "foo1"],
-        exec({ foo }) {}
+        examples: {
+          foo: "foo 123"
+        },
+        exec({ foo }) {
+          console.log(foo);
+        }
       },
       bar: {
         desc: "Test bar",
         args: ["bar"],
-        exec({ bar }) {}
+        examples: {
+          bar: "bar 456"
+        },
+        exec({ bar }) {
+          console.log(bar);
+        }
       }
     },
     config: {

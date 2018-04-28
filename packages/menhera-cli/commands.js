@@ -11,6 +11,7 @@ export const _ = {
 
 export const init = {
   desc: "Init Project",
+  alias: "i",
   args: ["templateName", "projectName"],
   examples: {
     "init:cli": "init uu-z/template-cli mycli",
