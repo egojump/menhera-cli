@@ -93,7 +93,7 @@ export const config = {
   start({ _, _val }) {
     const {
       alias: { options: optionAlias, commands: commandAlias },
-      config: { target, rootAlias, version }
+      config: { name, target, rootAlias, version }
     } = this;
 
     let { _: __, ...options } = parser(target || process.argv.slice(2));
@@ -124,10 +124,10 @@ export const config = {
 
     const { help, v } = val;
     if (help) {
-      _.$use({ "CLI.help": _key });
+      _.$use({ [`${name}.help`]: _key });
       return;
     }
-    if (version) {
+    if (v) {
       console.log(version);
       return;
     }
