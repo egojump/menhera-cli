@@ -18,6 +18,6 @@ export const examples = {
     let val = examples[example];
     let target = val.split(" ");
 
-    _.$use({ CLI: { config: { target, start: true } } });
+    _.$use({ [name]: { config: { target, start: true } } });
   }
 };
