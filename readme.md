@@ -11,11 +11,11 @@ $ yarn global add menhera-cli
 #### Install Template
 
 ```bash
-$ mhr init uu-z/template-cli mycli
+$ mhr e init:cli
 ```
 
 ```bash
-$ mhr init uu-z/template-module mymodule
+$ mhr e init:module
 ```
 
 ## Use For Module
