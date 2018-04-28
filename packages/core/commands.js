@@ -1,4 +1,4 @@
-import { root } from "postcss";
+import { EVENTS } from "menhera";
 
 export const examples = {
   desc: "Examples",
@@ -11,7 +11,7 @@ export const examples = {
       examples
     } = CLI;
     if (env.NONE_INPUTS) {
-      _.$use({ "CLI.examples": rootAlias });
+      _.$use({ [`${name}.examples`]: rootAlias });
       return;
     }
 

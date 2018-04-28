@@ -24,17 +24,7 @@ We suggest that you begin by typing:
     )
 };
 
-let colors = [
-  "black",
-  "red",
-  "green",
-  "yellow",
-  "blue",
-  "magenta",
-  "cyan",
-  "white",
-  "gray"
-];
+let colors = ["black", "red", "green", "yellow", "blue", "magenta", "cyan", "white", "gray"];
 
 let _spinner = null;
 export const spinner = ({ _key, _val }) => {

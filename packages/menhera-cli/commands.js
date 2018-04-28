@@ -4,7 +4,7 @@ import { forceDownload } from "./utils";
 export const _ = {
   exec({ _, _key, env }) {
     if (env.NONE_INPUTS) {
-      _.$use({ CLI: { help: _key } });
+      _.$use({ Mhr: { help: _key } });
     }
   }
 };
@@ -21,11 +21,11 @@ export const init = {
   async exec(data) {
     const { _, _key, templateName, projectName, clone, h, env } = data;
     if (env.NONE_INPUTS) {
-      _.$use({ CLI: { help: _key } });
+      _.$use({ Mhr: { help: _key } });
       return;
     }
     if (env.NONE_FULL_ARGS) {
-      _.$use({ CLI: { usage: _key } });
+      _.$use({ Mhr: { usage: _key } });
       return;
     }
     let desc = path.join(process.cwd(), projectName);

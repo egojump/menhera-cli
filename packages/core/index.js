@@ -1,8 +1,8 @@
 import * as CLI from "./hooks";
 import * as commands from "./commands";
 
-export default {
-  name: "CLI",
+export default ({ name, version }) => ({
+  name,
   alias: {
     options: {
       help: "h",
@@ -20,14 +20,14 @@ export default {
   examples: {},
   helper: {},
   _hooks: {
-    CLI
+    [name]: CLI
   },
   config: {
-    name: "cli",
-    version: "0.0.1",
+    name,
+    version,
     rootAlias: "_"
   },
-  CLI: {
+  [name]: {
     commands
   }
-};
+});
