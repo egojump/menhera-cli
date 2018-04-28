@@ -8,11 +8,12 @@ export default {
       help: "h",
       h: "help",
       version: "v",
-      v: "version",
+      v: "version"
+    },
+    commands: {
       examples: "e",
       e: "examples"
-    },
-    commands: {}
+    }
   },
   args: {},
   commands: {},
