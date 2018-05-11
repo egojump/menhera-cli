@@ -582,6 +582,10 @@
   version "0.0.38"
   resolved "https://registry.npmjs.org/@types/estree/-/estree-0.0.38.tgz#c1be40aa933723c608820a99a373a16d215a1ca2"
 
+"@types/koa-compose@^3.2.2":
+  version "3.2.2"
+  resolved "https://registry.npmjs.org/@types/koa-compose/-/koa-compose-3.2.2.tgz#dc106e000bbf92a3ac900f756df47344887ee847"
+
 "@types/log-update@^2.0.0":
   version "2.0.0"
   resolved "https://registry.npmjs.org/@types/log-update/-/log-update-2.0.0.tgz#ba8996a25251e8f5aee355194c352f13741c96d7"
@@ -2615,6 +2619,14 @@ fs-extra@^5.0.0:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
+fs-extra@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.npmjs.org/fs-extra/-/fs-extra-6.0.1.tgz#8abc128f7946e310135ddc93b98bddb410e7a34b"
+  dependencies:
+    graceful-fs "^4.1.2"
+    jsonfile "^4.0.0"
+    universalify "^0.1.0"
+
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
@@ -3469,6 +3481,10 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://registry.npmjs.org/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
 
+koa-compose@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/koa-compose/-/koa-compose-4.0.0.tgz#2800a513d9c361ef0d63852b038e4f6f2d5a773c"
+
 latest-version@^3.0.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/latest-version/-/latest-version-3.1.0.tgz#a205383fea322b33b5ae3b18abee0dc2f356ee15"
@@ -3742,6 +3758,13 @@ menhera-message@^0.0.1:
   dependencies:
     menhera-cli "^0.3.1-rc4"
 
+menhera-utils@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npmjs.org/menhera-utils/-/menhera-utils-0.0.1.tgz#36f1af737f1e6e3e046d6eba604b505653dfb84e"
+  dependencies:
+    menhera "^0.7.2"
+    menhera-cli "^0.3.1-rc4"
+
 menhera@^0.6.7-rc5:
   version "0.6.7-rc5"
   resolved "https://registry.npmjs.org/menhera/-/menhera-0.6.7-rc5.tgz#29bddfc859f2570da6dd9550bd809a6d507aa9a2"
@@ -3765,6 +3788,15 @@ menhera@^0.7.1-rc:
     lodash.get "^4.4.2"
     lodash.has "^4.5.2"
     lodash.set "^4.3.2"
+
+menhera@^0.7.2:
+  version "0.7.7"
+  resolved "https://registry.npmjs.org/menhera/-/menhera-0.7.7.tgz#cd8f4f9fab8a6a33959d11175968dc18045152ea"
+  dependencies:
+    lodash.get "^4.4.2"
+    lodash.has "^4.5.2"
+    lodash.set "^4.3.2"
+    uuid "^3.2.1"
 
 meow@^3.3.0:
   version "3.7.0"
@@ -5800,7 +5832,7 @@ uuid@^2.0.1:
   version "2.0.3"
   resolved "https://registry.npmjs.org/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
 
-uuid@^3.0.0, uuid@^3.0.1:
+uuid@^3.0.0, uuid@^3.0.1, uuid@^3.2.1:
   version "3.2.1"
   resolved "https://registry.npmjs.org/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
 

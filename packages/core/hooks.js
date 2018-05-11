@@ -1,7 +1,8 @@
 import parser from "yargs-parser";
 import { $set, $get, $ } from "menhera";
 import chalk from "chalk";
-import { genOutput, ENV } from "./utils";
+import { genOutput } from "./utils";
+import compose from "koa-compose";
 
 export const commands = {
   $({ _, _key, _val, cp }) {
@@ -93,7 +94,8 @@ export const config = {
   start({ _, _val }) {
     const {
       alias: { options: optionAlias, commands: commandAlias },
-      config: { name, target, rootAlias, version }
+      config: { name, target, rootAlias, version },
+      middlewares: { rootMiddlewares }
     } = this;
 
     let { _: __, ...options } = parser(target || process.argv.slice(2));
@@ -119,20 +121,21 @@ export const config = {
       this.args[`$${i}`] = args[i];
     });
 
-    let val = { _, CLI: this, ...this.args, _key, options, args, _args };
-    val.env = ENV(val);
+    let ctx = { _, CLI: this, config: this.config, ...this.args, _key, options, args, _args };
+    let fn = compose([...rootMiddlewares, exec]);
+    fn(ctx);
+  }
+};
 
-    const { help, v } = val;
-    if (help) {
-      _.$use({ [`${name}.help`]: _key });
-      return;
+export const use = {
+  $({ _key, _val }) {
+    !Array.isArray(_val) && (_val = [_val]);
+    const target = this.middlewares[_key];
+    if (!target) {
+      this.middlewares[_key] = _val;
+    } else {
+      this.middlewares[_key] = [...target, ..._val];
     }
-    if (v) {
-      console.log(version);
-      return;
-    }
-
-    exec(val);
   }
 };
 

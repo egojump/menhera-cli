@@ -1,13 +1,13 @@
 const mhr = require("menhera").default;
 const CLI = require("../dist");
 
-const Foo = CLI({ name: "Foo", version: "0.0.1" });
+const Foo = CLI({ version: "0.0.1" });
 
 mhr.$use({
   _mount: {
     Foo
   },
-  Foo: {
+  CLI: {
     commands: {
       _: {
         options: {
@@ -15,7 +15,7 @@ mhr.$use({
         },
         exec({ _, _key, env }) {
           if (env.NONE_INPUTS) {
-            _.$use({ Foo: { help: _key } });
+            _.$use({ CLI: { help: _key } });
           }
         }
       },

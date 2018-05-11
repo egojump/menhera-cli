@@ -8,19 +8,19 @@ export const examples = {
   async exec(data) {
     const { _, env, example, CLI } = data;
     const {
-      config: { name, rootAlias },
+      config: { rootAlias },
       examples
     } = CLI;
     if (env.NONE_INPUTS) {
-      _.$use({ [`${name}.examples`]: rootAlias });
+      _.$use({ [`CLI.examples`]: rootAlias });
       return;
     }
 
     let val = examples[example];
     let target = val.split(" ");
 
-    console.log(chalk.grey(`>>> ${name} ${val}`));
+    console.log(chalk.grey(`>>> ${val}`));
 
-    _.$use({ [name]: { config: { target, start: true } } });
+    _.$use({ "CLI.config": { target, start: true } });
   }
 };

@@ -5,7 +5,7 @@ import * as messages from "./messages";
 import * as commands from "./commands";
 import Message from "menhera-message";
 
-const Mhr = CLI({ name: "Mhr", version: "0.0.1" });
+const Mhr = CLI({ version: "0.0.1" });
 
 export default Menehra.$use({
   _mount: {
@@ -13,7 +13,7 @@ export default Menehra.$use({
     Message
   },
   messages,
-  Mhr: {
+  CLI: {
     commands,
     config: {
       start: true

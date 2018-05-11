@@ -1,33 +1,44 @@
+import path from "path";
 import * as CLI from "./hooks";
 import * as commands from "./commands";
+import { data, methods } from "menhera-utils";
+import { ENV, HV } from "./middlewares";
 
-export default ({ name, version }) => ({
-  name,
-  alias: {
-    options: {
-      help: "h",
-      h: "help",
-      version: "v",
-      v: "version"
+export default ({ version }) => ({
+  name: "CLI",
+  _hooks: {
+    data,
+    methods,
+    CLI
+  },
+  data: {
+    alias: {
+      options: {
+        help: "h",
+        h: "help",
+        version: "v",
+        v: "version"
+      },
+      commands: {
+        examples: "e",
+        e: "examples"
+      }
     },
-    commands: {
-      examples: "e",
-      e: "examples"
+    args: {},
+    commands: {},
+    examples: {},
+    middlewares: {},
+    helper: {},
+    config: {
+      name: "CLI",
+      package: require(path.join(__dirname, "../package.json")) || {},
+      rootAlias: "_"
     }
   },
-  args: {},
-  commands: {},
-  examples: {},
-  helper: {},
-  _hooks: {
-    [name]: CLI
-  },
-  config: {
-    name,
-    version,
-    rootAlias: "_"
-  },
-  [name]: {
-    commands
+  CLI: {
+    commands,
+    use: {
+      rootMiddlewares: [ENV, HV]
+    }
   }
 });

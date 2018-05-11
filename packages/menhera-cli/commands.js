@@ -4,7 +4,7 @@ import { forceDownload } from "./utils";
 export const _ = {
   exec({ _, _key, env }) {
     if (env.NONE_INPUTS) {
-      _.$use({ Mhr: { help: _key } });
+      _.$use({ CLI: { help: _key } });
     }
   }
 };
@@ -18,14 +18,14 @@ export const init = {
     "init:module": "init uu-z/template-module mymodule"
   },
   options: { clone: { alias: "c", desc: "clone repo", default: false } },
-  async exec(data) {
-    const { _, _key, templateName, projectName, clone, h, env } = data;
+  async exec(ctx) {
+    const { _, _key, templateName, projectName, clone, h, env } = ctx;
     if (env.NONE_INPUTS) {
-      _.$use({ Mhr: { help: _key } });
+      _.$use({ CLI: { help: _key } });
       return;
     }
     if (env.NONE_FULL_ARGS) {
-      _.$use({ Mhr: { usage: _key } });
+      _.$use({ CLI: { usage: _key } });
       return;
     }
     let desc = path.join(process.cwd(), projectName);
